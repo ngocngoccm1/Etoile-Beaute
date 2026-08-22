@@ -36,6 +36,13 @@
   homeFooter.setAttribute('aria-label', 'Informations et réseaux sociaux');
   homeFooter.innerHTML = `<div><strong>Etoile Beauté Studio</strong><span>28 bis rue de l'Etoile, 72 000 Le Mans, Sarthe, France</span></div><nav><a href="tel:${phone}">+33 6 71 88 13 41</a><a href="${planity}" target="_blank" rel="noopener">Planity</a><a href="https://www.instagram.com/ETOILEBEAUTESTUDIO" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/etoilebeautestudiolemans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.google.com/maps/search/?api=1&query=28+bis+rue+de+l%27Etoile%2C+72000+Le+Mans" target="_blank" rel="noopener">Google Maps</a></nav>`;
   (document.querySelector('.pageview') || document.body).append(homeFooter);
+  const socialSpotlight = document.createElement('section');
+  socialSpotlight.className = 'eb-social-spotlight';
+  socialSpotlight.setAttribute('aria-label', 'Suivez Etoile Beauté Studio');
+  socialSpotlight.innerHTML = `<p>Suivez Etoile Beauté Studio</p><nav><a href="https://www.instagram.com/ETOILEBEAUTESTUDIO" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/etoilebeautestudiolemans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.google.com/maps/search/?api=1&query=28+bis+rue+de+l%27Etoile%2C+72000+Le+Mans" target="_blank" rel="noopener">Google Maps</a></nav>`;
+  const firstSection = document.querySelector('.pageview > .com-section');
+  if (firstSection) firstSection.after(socialSpotlight);
+  else document.body.prepend(socialSpotlight);
   const routeTargets = { 'a-propos': '#w-u0znny0p', services: '#w-xhwrrhyg', 'nos-marques': '#w-r486talc', 'avis-clients': '#w-hl9izwdg' };
   if (window.__ETOILE_ROUTE__ && routeTargets[window.__ETOILE_ROUTE__]) {
     window.setTimeout(() => document.querySelector(routeTargets[window.__ETOILE_ROUTE__])?.scrollIntoView({ block: 'start' }), 650);
