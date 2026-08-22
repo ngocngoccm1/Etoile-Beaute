@@ -1,0 +1,16 @@
+:root { --eb-gold: #c9a14a; --eb-ink: #0e0d0d; }
+.eb-topbar { position: fixed; z-index: 999999; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; width: max-content; max-width: calc(100% - 28px); padding: 9px; border: 1px solid rgba(201,161,74,.62); background: rgba(10,9,9,.94); box-shadow: 0 15px 38px rgba(0,0,0,.28); backdrop-filter: blur(14px); }
+.eb-topbar a { color: #f9f4e9; font-family: Roboto, sans-serif; font-size: 11px; text-decoration: none; white-space: nowrap; padding: 10px 13px; letter-spacing: .03em; }
+.eb-topbar a:hover { color: var(--eb-gold); }
+.eb-topbar .eb-book { background: var(--eb-gold); color: #111; font-weight: 700; }
+.eb-services-nav { position: fixed; z-index: 999998; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 16px; padding: 10px 24px; background: rgba(10,9,9,.94); border-bottom: 1px solid rgba(201,161,74,.35); transform: translateY(-100%); transition: transform .2s; }
+.eb-services-nav:hover, .eb-services-nav:focus-within { transform: translateY(0); }
+.eb-services-nav a { color: #f6f1e7; text-decoration: none; font: 500 10px Roboto, sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+.eb-services-nav a:hover { color: var(--eb-gold); }
+.eb-contact-footer { background: #111; color: #f7f3ed; padding: 42px max(6vw,24px) 95px; text-align: center; font-family: Roboto, sans-serif; }
+.eb-contact-footer h2 { margin: 0 0 12px; color: var(--eb-gold); font: 500 28px 'Playfair Display', serif; }
+.eb-contact-footer p { margin: 7px 0; font-size: 13px; }
+.eb-contact-footer a { color: #f7f3ed; text-decoration: none; }
+.eb-contact-footer .eb-socials { display: flex; justify-content: center; gap: 13px; margin-top: 20px; }
+.eb-contact-footer .eb-socials a { border: 1px solid var(--eb-gold); padding: 8px 13px; color: var(--eb-gold); font-size: 11px; }
+@media (max-width: 720px) { .eb-topbar { gap: 0; bottom: 10px; } .eb-topbar a { display:none; } .eb-topbar .eb-book,.eb-topbar .eb-phone { display:block; } .eb-services-nav { display:none; } }
