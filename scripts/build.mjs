@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = fileURLToPath(new URL('../dist', import.meta.url));
 
+await import('./sync-webcake-route-pages.mjs');
+
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await cp(new URL('../index.html', import.meta.url), new URL('../dist/index.html', import.meta.url));
@@ -18,10 +20,8 @@ for (const path of servicePaths) {
   await writeFile(new URL(`../dist/${path}/index.html`, import.meta.url), serviceTemplate);
 }
 const sectionPaths = ['a-propos', 'services', 'nos-marques', 'avis-clients'];
-const sectionTemplate = await readFile(new URL('../section-page.html', import.meta.url), 'utf8');
 for (const path of sectionPaths) {
-  await mkdir(new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
-  await writeFile(new URL(`../dist/${path}/index.html`, import.meta.url), sectionTemplate);
+  await cp(new URL(`../${path}/`, import.meta.url), new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
 }
 await writeFile(new URL('../dist/.nojekyll', import.meta.url), '');
 console.log('Production clone written to dist/index.html');
