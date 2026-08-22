@@ -22,6 +22,9 @@
   .eb-mobile-head { position:sticky; top:0; z-index:30; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 18px; color:#f6efe5; background:#0b0a0a; }
   .eb-mobile-brand { color:var(--eb-gold); text-decoration:none; font:500 18px/1 'Playfair Display',serif; letter-spacing:.04em; }
   .eb-mobile-head a:last-child { color:#111; background:var(--eb-gold); padding:9px 11px; text-decoration:none; font-size:10px; font-weight:700; }
+  .eb-mobile-social-bar { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#3a342c; }
+  .eb-mobile-social-bar a { display:flex; justify-content:center; align-items:center; min-height:42px; background:#151310; color:#f7f0e4; text-decoration:none; font-size:10px; font-weight:700; letter-spacing:.05em; }
+  .eb-mobile-social-bar a:hover,.eb-mobile-social-bar a:active { background:#27221c; color:var(--eb-gold); }
   .eb-mobile-hero { min-height:425px; padding:72px 22px 38px; color:#fff; background:linear-gradient(90deg,rgba(9,8,8,.91),rgba(9,8,8,.48)),url('https://content.pancake.vn/1/fwebp80/b6/5e/e0/39/80d3208f47076d529c9c7ece2b7210211ba7ab31e9a6fb8bb7386651-w:2000-h:1500-l:4002720-t:image/png.png') center/cover; }
   .eb-mobile-kicker { margin:0 0 15px; color:var(--eb-gold); font-size:10px; font-weight:700; letter-spacing:.13em; }
   .eb-mobile-hero h1,.eb-mobile-section h2 { margin:0; font:500 39px/1.04 'Playfair Display',serif; }
