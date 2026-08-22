@@ -17,11 +17,23 @@
     ['Google Maps', 'https://www.google.com/maps/search/?api=1&query=28+bis+rue+de+l%27Etoile%2C+72000+Le+Mans']
   ].map(([label, href]) => `<a href="${href}" target="_blank" rel="noopener">${label}</a>`).join('');
   document.body.append(bar, social, booking);
+  const relabelOriginalMenu = () => {
+    document.querySelectorAll('.text-block-css').forEach(node => {
+      const label = node.textContent.replace(/\s+/g, ' ').trim();
+      if (/^Envoyer la demande$/i.test(label)) node.textContent = 'Réserver sur Planity';
+      if (/^Contactez-nous$/i.test(label)) node.textContent = 'Appeler le studio';
+    });
+  };
+  relabelOriginalMenu();
   document.addEventListener('click', event => {
-    const label = event.target.closest('.button-text, .com-button, button, a')?.textContent?.replace(/\s+/g, ' ').trim();
+    const label = event.target.closest('.button-text, .com-button, button, a, .text-block-css')?.textContent?.replace(/\s+/g, ' ').trim();
     if (/Réserver|Découvrir Nos Soins|Envoyer la demande|Nous Contacter/i.test(label || '')) {
       event.preventDefault();
       window.open(planity, '_blank', 'noopener');
+    }
+    if (/Appeler le studio/i.test(label || '')) {
+      event.preventDefault();
+      window.location.href = `tel:${phone}`;
     }
   }, true);
 })();
