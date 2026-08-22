@@ -7,7 +7,7 @@ const dist = fileURLToPath(new URL('../dist', import.meta.url));
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await cp(new URL('../index.html', import.meta.url), new URL('../dist/index.html', import.meta.url));
-for (const file of ['home.css', 'home.js', 'service-page.html', 'service-page.css', 'service-page.js']) {
+for (const file of ['local-clone.css', 'local-clone.js', 'service-page.html', 'service-page.css', 'service-page.js']) {
   await cp(new URL(`../${file}`, import.meta.url), new URL(`../dist/${file}`, import.meta.url));
 }
 await cp(new URL('../assets/', import.meta.url), new URL('../dist/assets/', import.meta.url), { recursive: true });
