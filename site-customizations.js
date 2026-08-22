@@ -38,7 +38,10 @@
   const footer = document.createElement('footer');
   footer.className = 'eb-contact-footer';
   footer.innerHTML = `<h2>Etoile Beauté Studio</h2><p><a href="tel:${phone}">☎ +33 6 71 88 13 41</a></p><p>⌾ ${address}</p><p>E-mail : à compléter</p><div class="eb-socials"><a href="${planity}" target="_blank" rel="noopener">Planity</a><a href="https://www.facebook.com/etoilebeautestudiolemans/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/ETOILEBEAUTESTUDIO" target="_blank" rel="noopener">Instagram</a><a href="https://www.google.com/maps/search/?api=1&query=Etoile+Beaute+Studio+28+bis+rue+de+l%27Etoile+Le+Mans" target="_blank" rel="noopener">Google Maps</a></div>`;
-  window.addEventListener('load', () => {
+  let initialized = false;
+  const initialize = () => {
+    if (initialized) return;
+    initialized = true;
     if (window.matchMedia('(max-width: 720px)').matches) { renderMobileHome(); return; }
     document.querySelector('form')?.closest('.com-section')?.style.setProperty('display', 'none', 'important');
     [...document.querySelectorAll('.com-section')].forEach(section => {
@@ -47,5 +50,7 @@
     });
     setBooking();
     document.body.append(footer);
-  }, { once: true });
+  };
+  initialize();
+  window.addEventListener('load', initialize, { once: true });
 })();
