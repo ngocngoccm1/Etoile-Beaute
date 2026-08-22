@@ -43,6 +43,20 @@
   };
   relabelOriginalMenu();
 
+  const contactMenuLink = document.createElement('a');
+  contactMenuLink.className = 'eb-direct-menu eb-contact-menu';
+  contactMenuLink.href = '#w-9dhr9sri';
+  contactMenuLink.textContent = 'Nous trouver';
+  document.querySelector('#w-c7ayb5b5 .popup-wrapper')?.append(contactMenuLink);
+
+  const addContactPhone = () => {
+    const description = document.querySelector('#w-ho6snzah .text-block-css');
+    const button = document.querySelector('#w-brukhqoz .button-text');
+    if (description) description.innerHTML = `Pour toute information ou prise de rendez-vous, contactez-nous au <a href="tel:${phone}">${phoneLabel}</a>.`;
+    if (button) button.textContent = 'Appeler le studio';
+  };
+  addContactPhone();
+
   const menuToggle = document.createElement('button');
   menuToggle.className = 'eb-menu-toggle';
   menuToggle.type = 'button';
@@ -71,7 +85,7 @@
   const addHeroContactDetails = () => {
     const contactLine = document.querySelector('#w-giyttyyr .text-block-css');
     if (!contactLine || window.__ETOILE_ROUTE__) return;
-    contactLine.innerHTML = `28 bis rue de l'Étoile, 72000 Le Mans<br><a href="tel:${phone}">${phoneLabel}</a><br><a href="mailto:${email}">${email}</a>`;
+    contactLine.innerHTML = `28 bis rue de l'Étoile, 72000 Le Mans<br><a href="tel:${phone}">${phoneLabel}</a>`;
   };
   addHeroContactDetails();
 
@@ -107,7 +121,9 @@
       explore.setAttribute('aria-label', 'Découvrir le studio');
       explore.innerHTML = `<div><p>Découvrez Etoile Beauté Studio</p><h2>Chaque univers a sa page</h2><span>Explorez nos soins, notre histoire, nos marques et les avis de nos clientes.</span></div><nav><a href="${base}a-propos/">À propos</a><a href="${base}services/">Services</a><a href="${base}nos-marques/">Nos marques</a><a href="${base}avis-clients/">Avis clients</a></nav>`;
       hero.after(explore);
-      sections.slice(1).forEach(section => { section.hidden = true; });
+      sections.slice(1).forEach(section => {
+        section.hidden = section.id !== 'w-9dhr9sri';
+      });
     }
   }
 
