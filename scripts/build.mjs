@@ -6,14 +6,11 @@ const dist = fileURLToPath(new URL('../dist', import.meta.url));
 
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
-const original = await readFile(new URL('../original-site.html', import.meta.url), 'utf8');
-const staticHome = original
-  .replace('</head>', '<link rel="stylesheet" href="site-customizations.css"></head>')
-  .replace('</body>', '<script src="site-customizations.js"></script></body>');
-await writeFile(new URL('../dist/index.html', import.meta.url), staticHome);
-for (const file of ['site-customizations.css', 'site-customizations.js', 'service-page.html', 'service-page.css', 'service-page.js']) {
+await cp(new URL('../index.html', import.meta.url), new URL('../dist/index.html', import.meta.url));
+for (const file of ['home.css', 'home.js', 'service-page.html', 'service-page.css', 'service-page.js']) {
   await cp(new URL(`../${file}`, import.meta.url), new URL(`../dist/${file}`, import.meta.url));
 }
+await cp(new URL('../assets/', import.meta.url), new URL('../dist/assets/', import.meta.url), { recursive: true });
 const servicePaths = ['soin-visage-japonais-menard-au-mans', 'maquillage-permanent-levres-eyeliner', 'maquillage-sourcils', 'massage-corps-californien-kobido', 'soins-des-mains-gommage-corps'];
 const serviceTemplate = await readFile(new URL('../service-page.html', import.meta.url), 'utf8');
 for (const path of servicePaths) {

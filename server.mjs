@@ -1,4 +1,4 @@
-import { createReadStream, existsSync, readFileSync } from 'node:fs';
+import { createReadStream, existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,7 +15,7 @@ createServer((request, response) => {
     createReadStream(join(root, 'service-page.html')).pipe(response);
     return;
   }
-  const requested = pathname === '/' ? 'original-site.html' : pathname.replace(/^\/+/, '');
+  const requested = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
   const file = normalize(join(root, requested));
 
   if (!file.startsWith(root) || !existsSync(file)) {
@@ -24,12 +24,6 @@ createServer((request, response) => {
     return;
   }
 
-  if (requested === 'original-site.html') {
-    const source = readFileSync(file, 'utf8').replace('</head>', '<link rel="stylesheet" href="/site-customizations.css"></head>').replace('</body>', '<script src="/site-customizations.js"></script></body>');
-    response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    response.end(source);
-    return;
-  }
   response.writeHead(200, { 'Content-Type': types[extname(file).toLowerCase()] || 'application/octet-stream' });
   createReadStream(file).pipe(response);
 }).listen(port, '127.0.0.1', () => console.log(`Etoile Beauté clone ready at http://127.0.0.1:${port}`));
