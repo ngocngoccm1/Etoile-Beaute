@@ -3,6 +3,9 @@
   const phone = '+33243178056';
   const phoneLabel = '02 43 17 80 56';
   const email = 'etoilebeautestudio@gmail.com';
+  const finalStyle = document.createElement('style');
+  finalStyle.textContent = '.eb-booking-section a{color:#16120e!important}@media(max-width:720px){#w-i23sk9bo{top:auto!important;bottom:24px!important}}';
+  document.head.append(finalStyle);
   const maps = 'https://maps.app.goo.gl/kQ4AEPoV4JqBQW9CA?g_st=ic';
   const instagram = 'https://www.instagram.com/etoilebeautestudiolemans/';
   const facebook = 'https://www.facebook.com/etoilebeautestudiolemans/';
@@ -85,7 +88,7 @@
   const addHeroContactDetails = () => {
     const contactLine = document.querySelector('#w-giyttyyr .text-block-css');
     if (!contactLine || window.__ETOILE_ROUTE__) return;
-    contactLine.innerHTML = `28 bis rue de l'Étoile, 72000 Le Mans<br><a href="tel:${phone}">${phoneLabel}</a>`;
+    contactLine.innerHTML = `<a href="tel:${phone}">${phoneLabel}</a><br>28 bis rue de l'Étoile, 72000 Le Mans`;
   };
   addHeroContactDetails();
 
