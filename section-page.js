@@ -1,0 +1,16 @@
+const planity = 'https://www.planity.com/etoile-beaute-studio-72100-le-mans';
+const pages = {
+  '/a-propos': { eyebrow: 'À PROPOS DE NOUS', title: 'Etoile Beauté Studio', intro: 'Un institut indépendant, chaleureux et à taille humaine, dédié à la beauté, au bien-être et à la confiance en soi.', menu: 'Notre approche', cards: [['Expertise', 'Des soins réalisés avec écoute, précision et professionnalisme.', 'Depuis 2015'], ['Personnalisation', 'Chaque rituel est adapté à votre peau, votre visage et vos envies.', 'Sur mesure'], ['Bien-être', 'Un moment de calme pour se reconnecter à soi et révéler son éclat.', 'Le Mans']] },
+  '/services': { eyebrow: 'NOS PRESTATIONS', title: 'Les soins Etoile Beauté', intro: 'Découvrez nos grandes familles de soins et accédez à chaque carte détaillée dans une page dédiée.', menu: 'Choisissez votre soin', cards: [['Soins visage japonais Menard', 'Rituels visage d’exception inspirés de la beauté japonaise.', 'Voir la page', '../soin-visage-japonais-menard-au-mans/'], ['Maquillage permanent lèvres & eyeliner', 'Sublimez vos lèvres et votre regard avec un résultat délicat.', 'Voir la page', '../maquillage-permanent-levres-eyeliner/'], ['Maquillage sourcils', 'Une ligne harmonieuse adaptée à votre visage.', 'Voir la page', '../maquillage-sourcils/'], ['Massages corps & Kobido', 'Californien, dos & épaules, Kobido visage.', 'Voir la page', '../massage-corps-californien-kobido/'], ['Soins des mains & gommage corps', 'Des gestes de douceur pour une peau nourrie.', 'Voir la page', '../soins-des-mains-gommage-corps/']] },
+  '/nos-marques': { eyebrow: 'NOS MARQUES', title: 'L’excellence japonaise', intro: 'Des marques sélectionnées pour leur efficacité, leur sensorialité et le respect de chaque peau.', menu: 'Nos engagements', cards: [['Menard', 'Des soins japonais d’exception, au cœur de nos rituels visage.', 'Japon'], ['Sélection experte', 'Des produits choisis pour leurs actifs et leur qualité.', 'Haute qualité'], ['Conseil personnalisé', 'Une routine beauté cohérente, pensée pour votre peau.', 'Sur mesure']] },
+  '/avis-clients': { eyebrow: 'AVIS CLIENTS', title: 'Vos mots nous inspirent', intro: 'Merci à nos clientes et clients pour leur confiance et leurs précieux retours.', menu: 'Ce que vous appréciez', cards: [['Accueil', '« Un accueil chaleureux et une vraie écoute. »', '★★★★★'], ['Résultats', '« Des soins délicats, professionnels et visibles. »', '★★★★★'], ['Détente', '« Un véritable moment pour soi, dans un cadre apaisant. »', '★★★★★']] }
+};
+const slug = '/' + location.pathname.split('/').filter(Boolean).at(-1);
+const page = pages[slug] || pages['/a-propos'];
+document.title = `${page.title} | Etoile Beauté Studio`;
+document.querySelector('#eyebrow').textContent = page.eyebrow;
+document.querySelector('#title').textContent = page.title;
+document.querySelector('#intro').textContent = page.intro;
+document.querySelector('#menu-title').textContent = page.menu;
+document.querySelector('#cards').innerHTML = page.cards.map(([name, text, note, href]) => `<article class="card"><h3>${name}</h3><p>${text}</p>${href ? `<a class="book" href="${href}">${note}</a>` : `<span class="price">${note}</span>`}</article>`).join('');
+document.querySelectorAll('[data-planity]').forEach(link => { link.href = planity; link.target = '_blank'; link.rel = 'noopener'; });

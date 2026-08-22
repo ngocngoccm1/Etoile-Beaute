@@ -7,7 +7,7 @@ const dist = fileURLToPath(new URL('../dist', import.meta.url));
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await cp(new URL('../index.html', import.meta.url), new URL('../dist/index.html', import.meta.url));
-for (const file of ['local-clone.css', 'local-clone.js', 'service-page.html', 'service-page.css', 'service-page.js']) {
+for (const file of ['local-clone.css', 'local-clone.js', 'service-page.html', 'service-page.css', 'service-page.js', 'section-page.html', 'section-page.js']) {
   await cp(new URL(`../${file}`, import.meta.url), new URL(`../dist/${file}`, import.meta.url));
 }
 await cp(new URL('../assets/', import.meta.url), new URL('../dist/assets/', import.meta.url), { recursive: true });
@@ -16,6 +16,12 @@ const serviceTemplate = await readFile(new URL('../service-page.html', import.me
 for (const path of servicePaths) {
   await mkdir(new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
   await writeFile(new URL(`../dist/${path}/index.html`, import.meta.url), serviceTemplate);
+}
+const sectionPaths = ['a-propos', 'services', 'nos-marques', 'avis-clients'];
+const sectionTemplate = await readFile(new URL('../section-page.html', import.meta.url), 'utf8');
+for (const path of sectionPaths) {
+  await mkdir(new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
+  await writeFile(new URL(`../dist/${path}/index.html`, import.meta.url), sectionTemplate);
 }
 await writeFile(new URL('../dist/.nojekyll', import.meta.url), '');
 console.log('Production clone written to dist/index.html');
