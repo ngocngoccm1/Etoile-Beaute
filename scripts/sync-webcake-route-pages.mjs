@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
-const routes = ['a-propos', 'services', 'nos-marques', 'avis-clients'];
+const routes = ['soins-visage-le-mans', 'menard-le-mans', 'massages-le-mans', 'maquillage-permanent-le-mans', 'institut', 'contact'];
 const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 
 for (const route of routes) {

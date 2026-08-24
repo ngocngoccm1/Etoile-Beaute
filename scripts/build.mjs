@@ -13,13 +13,7 @@ for (const file of ['local-clone.css', 'local-clone.js', 'service-page.html', 's
   await cp(new URL(`../${file}`, import.meta.url), new URL(`../dist/${file}`, import.meta.url));
 }
 await cp(new URL('../assets/', import.meta.url), new URL('../dist/assets/', import.meta.url), { recursive: true });
-const servicePaths = ['soin-visage-japonais-menard-au-mans', 'maquillage-permanent-levres-eyeliner', 'maquillage-sourcils', 'massage-corps-californien-kobido', 'soins-des-mains-gommage-corps'];
-const serviceTemplate = await readFile(new URL('../service-page.html', import.meta.url), 'utf8');
-for (const path of servicePaths) {
-  await mkdir(new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
-  await writeFile(new URL(`../dist/${path}/index.html`, import.meta.url), serviceTemplate);
-}
-const sectionPaths = ['a-propos', 'services', 'nos-marques', 'avis-clients'];
+const sectionPaths = ['soins-visage-le-mans', 'menard-le-mans', 'massages-le-mans', 'maquillage-permanent-le-mans', 'institut', 'contact'];
 for (const path of sectionPaths) {
   await cp(new URL(`../${path}/`, import.meta.url), new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
 }

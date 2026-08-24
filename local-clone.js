@@ -10,53 +10,35 @@
   const instagram = 'https://www.instagram.com/etoilebeautestudiolemans/';
   const facebook = 'https://www.facebook.com/etoilebeautestudiolemans/';
   const base = window.__ETOILE_ROUTE__ ? '../' : './';
-  const routeTargets = {
-    'a-propos': '#w-u0znny0p',
-    services: '#w-xhwrrhyg',
-    'nos-marques': '#w-r486talc',
-    'avis-clients': '#w-hl9izwdg'
+  const routeTargets = { institut: '#w-u0znny0p', 'soins-visage-le-mans': '#w-xhwrrhyg', 'menard-le-mans': '#w-r486talc', 'massages-le-mans': '#w-xhwrrhyg', 'maquillage-permanent-le-mans': '#w-xhwrrhyg', contact: '#w-9dhr9sri' };
+  const menuItems = [
+    ['Accueil', base], ['Soins du visage', `${base}soins-visage-le-mans/`], ['Soins japonais Menard', `${base}menard-le-mans/`], ['Massages', `${base}massages-le-mans/`], ['Maquillage permanent', `${base}maquillage-permanent-le-mans/`], ["L'institut", `${base}institut/`], ['Contact & rendez-vous', `${base}contact/`]
+  ];
+  const menuPages = new Map(menuItems.map(([label, href]) => [label.toUpperCase(), href]));
+  const createMenu = () => {
+    const wrapper = document.querySelector('#w-c7ayb5b5 .popup-wrapper');
+    if (!wrapper) return;
+    wrapper.innerHTML = `<nav class="eb-site-menu" aria-label="Navigation principale">${menuItems.map(([label, href]) => `<a class="eb-direct-menu" href="${href}"><span>${label}</span><small>${new URL(href, location.href).pathname}</small></a>`).join('')}</nav>`;
   };
-  const menuPages = new Map([
-    ['ACCUEIL', base],
-    ['À PROPOS', `${base}a-propos/`],
-    ['SERVICES', `${base}services/`],
-    ['NOS MARQUES', `${base}nos-marques/`],
-    ['AVIS DE NOS', `${base}avis-clients/`]
-  ]);
-  const relabelOriginalMenu = () => {
-    document.querySelectorAll('.text-block-css').forEach(node => {
-      const label = node.textContent.replace(/\s+/g, ' ').trim();
-      const page = menuPages.get(label.toUpperCase());
-      const action = /^Envoyer la demande$/i.test(label)
-        ? { label: 'Réserver sur Planity', href: planity, external: true }
-        : /^Contactez-nous$/i.test(label)
-          ? { label: 'Appeler le studio', href: `tel:${phone}` }
-          : page ? { label: /^avis de nos$/i.test(label) ? 'Avis clients' : label, href: page } : null;
-      if (!action) return;
-      const link = document.createElement('a');
-      link.className = `${node.className} eb-direct-menu`;
-      link.href = action.href;
-      link.textContent = action.label;
-      if (action.external) {
-        link.target = '_blank';
-        link.rel = 'noopener';
-      }
-      node.replaceWith(link);
-    });
-  };
-  relabelOriginalMenu();
+  createMenu();
 
-  const contactMenuLink = document.createElement('a');
-  contactMenuLink.className = 'eb-direct-menu eb-contact-menu';
-  contactMenuLink.href = '#w-9dhr9sri';
-  contactMenuLink.textContent = 'Nous trouver';
-  document.querySelector('#w-c7ayb5b5 .popup-wrapper')?.append(contactMenuLink);
+  const tagline = document.querySelector('#w-lzfu165e .text-block-css');
+  if (tagline) tagline.textContent = 'Institut de Beauté & Bien-être Le Mans';
 
   const addContactPhone = () => {
     const description = document.querySelector('#w-ho6snzah .text-block-css');
-    const button = document.querySelector('#w-brukhqoz .button-text');
     if (description) description.innerHTML = `Pour toute information ou prise de rendez-vous, contactez-nous au <a href="tel:${phone}">${phoneLabel}</a>.`;
-    if (button) button.textContent = 'Appeler le studio';
+    const originalButton = document.querySelector('#w-brukhqoz');
+    if (originalButton) {
+      const callLink = document.createElement('a');
+      callLink.id = originalButton.id;
+      callLink.className = originalButton.className;
+      callLink.href = `tel:${phone}`;
+      callLink.setAttribute('aria-label', `Appeler le studio au ${phoneLabel}`);
+      callLink.innerHTML = originalButton.innerHTML;
+      callLink.querySelector('.button-text').textContent = 'Appeler le studio';
+      originalButton.replaceWith(callLink);
+    }
   };
   addContactPhone();
 
@@ -122,7 +104,7 @@
       const explore = document.createElement('section');
       explore.className = 'eb-home-explore';
       explore.setAttribute('aria-label', 'Découvrir le studio');
-      explore.innerHTML = `<div><p>Découvrez Etoile Beauté Studio</p><h2>Chaque univers a sa page</h2><span>Explorez nos soins, notre histoire, nos marques et les avis de nos clientes.</span></div><nav><a href="${base}a-propos/">À propos</a><a href="${base}services/">Services</a><a href="${base}nos-marques/">Nos marques</a><a href="${base}avis-clients/">Avis clients</a></nav>`;
+      explore.innerHTML = `<div><p>Découvrez Etoile Beauté Studio</p><h2>Chaque univers a sa page</h2><span>Explorez nos soins, notre institut et prenez rendez-vous en quelques clics.</span></div><nav>${menuItems.slice(1).map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}</nav>`;
       hero.after(explore);
       sections.slice(1).forEach(section => {
         section.hidden = section.id !== 'w-9dhr9sri';
@@ -142,7 +124,7 @@
       const routeNav = document.createElement('nav');
       routeNav.className = 'eb-route-nav';
       routeNav.setAttribute('aria-label', 'Navigation principale');
-      routeNav.innerHTML = `<a href="${base}">Accueil</a><a href="${base}a-propos/">À propos</a><a href="${base}services/">Services</a><a href="${base}nos-marques/">Nos marques</a><a href="${base}avis-clients/">Avis clients</a><a href="${planity}" target="_blank" rel="noopener">Réserver sur Planity</a>`;
+      routeNav.innerHTML = `${menuItems.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a href="${planity}" target="_blank" rel="noopener">Réserver sur Planity</a>`;
       pageview.prepend(routeNav);
     }
   }
