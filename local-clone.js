@@ -12,7 +12,7 @@
   const base = window.__ETOILE_ROUTE__ ? '../' : './';
   const routeTargets = { institut: '#w-u0znny0p', 'soins-visage-le-mans': '#w-xhwrrhyg', 'menard-le-mans': '#w-r486talc', 'massages-le-mans': '#w-xhwrrhyg', 'maquillage-permanent-le-mans': '#w-xhwrrhyg', contact: '#w-9dhr9sri' };
   const menuItems = [
-    ['Accueil', base], ['Soins du visage', `${base}soins-visage-le-mans/`], ['Soins japonais Menard', `${base}menard-le-mans/`], ['Massages', `${base}massages-le-mans/`], ['Maquillage permanent', `${base}maquillage-permanent-le-mans/`], ["L'institut", `${base}institut/`], ['Contact & rendez-vous', `${base}contact/`]
+    ['Accueil', base], ["L’Institut", `${base}institut/`], ['Soins du visage', `${base}soins-visage-le-mans/`], ['Produits Menard du Japon', `${base}menard-le-mans/`], ['Massages corps', `${base}massages-le-mans/`], ['Maquillage Permanent', `${base}maquillage-permanent-le-mans/`], ['Contact & Rendez-vous', `${base}contact/`]
   ];
   const menuPages = new Map(menuItems.map(([label, href]) => [label.toUpperCase(), href]));
   const createMenu = () => {
@@ -97,6 +97,42 @@
   replaceBookingForm();
 
   const pageview = document.querySelector('.pageview');
+  const routeDetails = {
+    'soins-visage-le-mans': {
+      eyebrow: 'SOINS DU VISAGE', title: 'Soins visage sur mesure', intro: 'Des rituels personnalisés pour hydrater, illuminer et préserver l’éclat naturel de votre peau.', cards: [
+        ['Hydratation intense', 'Un soin visage réconfortant pour retrouver souplesse, confort et luminosité.', 'Réservation sur Planity'],
+        ['Soin éclat', 'Un rituel ciblé pour lisser le grain de peau et réveiller le teint.', 'Réservation sur Planity'],
+        ['Soin anti-âge', 'Un accompagnement expert adapté aux besoins de votre peau.', 'Réservation sur Planity']
+      ]
+    },
+    'menard-le-mans': {
+      eyebrow: 'PRODUITS MENARD DU JAPON', title: 'L’expertise Menard', intro: 'Découvrez les rituels japonais Menard, alliant gestuelle experte et produits d’exception.', cards: [
+        ['Soin Signature Lumineux TK', 'Soin hydratation intensif à l’extrait de gardénia pour une peau souple et lumineuse.', '89 €'],
+        ['Éclat Suprême Fairlucent', 'Un rituel illuminant haute performance pour une peau visiblement plus lumineuse.', '109 €'],
+        ['Lumière Pure Saranari', 'Soin visage anti-âge associant hydratation profonde, élasticité et confort.', '125 €']
+      ]
+    },
+    'massages-le-mans': {
+      eyebrow: 'MASSAGES CORPS', title: 'Une parenthèse de bien-être', intro: 'Des massages conçus pour relâcher les tensions et retrouver une sensation de légèreté.', cards: [
+        ['Massage Californien', 'Un massage enveloppant, doux et profondément relaxant pour le corps.', 'Réservation sur Planity'],
+        ['Massage dos & épaules', 'Un soin ciblé pour délier les tensions du haut du corps.', 'Réservation sur Planity'],
+        ['Kobido visage', 'Un massage du visage inspiré des techniques japonaises.', 'Réservation sur Planity']
+      ]
+    },
+    'maquillage-permanent-le-mans': {
+      eyebrow: 'MAQUILLAGE PERMANENT', title: 'Sublimez vos traits durablement', intro: 'Des prestations de dermopigmentation réalisées avec précision pour un résultat harmonieux et naturel.', cards: [
+        ['Sourcils', 'Microblading, microshading et restructuration pour redessiner la ligne du sourcil.', 'À partir de 300 €'],
+        ['Lèvres', 'Dégradé ou remplissage pour des lèvres définies et lumineuses.', 'À partir de 350 €'],
+        ['Eyeliner', 'Un trait personnalisé pour intensifier le regard avec élégance.', 'À partir de 200 €']
+      ]
+    }
+  };
+  const createDetailPage = detail => {
+    const section = document.createElement('section');
+    section.className = 'eb-detail-page';
+    section.innerHTML = `<div class="eb-detail-intro"><p>${detail.eyebrow}</p><h1>${detail.title}</h1><span>${detail.intro}</span></div><div class="eb-detail-cards">${detail.cards.map(([name, text, price]) => `<article><p>${price}</p><h2>${name}</h2><span>${text}</span><a href="${planity}" target="_blank" rel="noopener">Prendre rendez-vous</a></article>`).join('')}</div>`;
+    return section;
+  };
   if (!window.__ETOILE_ROUTE__ && pageview) {
     const sections = [...pageview.querySelectorAll(':scope > .com-section')];
     const hero = sections[0];
@@ -113,11 +149,12 @@
   }
 
   if (window.__ETOILE_ROUTE__ && pageview) {
+    const detail = routeDetails[window.__ETOILE_ROUTE__];
     const target = document.querySelector(routeTargets[window.__ETOILE_ROUTE__]);
     const targetSection = target?.closest('.com-section');
-    if (targetSection) {
+    if (detail || targetSection) {
       pageview.querySelectorAll(':scope > .com-section').forEach(section => {
-        section.hidden = section !== targetSection;
+        section.hidden = detail || section !== targetSection;
       });
       document.querySelector('.eb-booking-section')?.setAttribute('hidden', '');
 
@@ -126,6 +163,7 @@
       routeNav.setAttribute('aria-label', 'Navigation principale');
       routeNav.innerHTML = `${menuItems.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a href="${planity}" target="_blank" rel="noopener">Réserver sur Planity</a>`;
       pageview.prepend(routeNav);
+      if (detail) routeNav.after(createDetailPage(detail));
     }
   }
 
