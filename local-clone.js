@@ -99,38 +99,37 @@
   const pageview = document.querySelector('.pageview');
   const routeDetails = {
     'soins-visage-le-mans': {
-      eyebrow: 'SOINS DU VISAGE', title: 'Soins visage sur mesure', intro: 'Des rituels personnalisés pour hydrater, illuminer et préserver l’éclat naturel de votre peau.', cards: [
-        ['Hydratation intense', 'Un soin visage réconfortant pour retrouver souplesse, confort et luminosité.', 'Réservation sur Planity'],
-        ['Soin éclat', 'Un rituel ciblé pour lisser le grain de peau et réveiller le teint.', 'Réservation sur Planity'],
-        ['Soin anti-âge', 'Un accompagnement expert adapté aux besoins de votre peau.', 'Réservation sur Planity']
+      eyebrow: 'SOINS DU VISAGE', title: 'Soins visage sur mesure', intro: 'Des rituels inspirés du Japon, pour détendre les traits, purifier la peau et raviver l’éclat.', cards: [
+        { title: 'Massages visage & crâne', text: 'Des gestes précis et relaxants pour libérer les tensions du visage, du cuir chevelu et de la nuque.', items: [['Massage visage HANA', '30 min · 45 €'], ['Massage crânien Shiatsu', '20 min · 35 €'], ['Rituel crânien — tête, nuque & épaules', '45 min · 55 €'], ['Rituel crânien et visage aux pochons d’herbes', '60 min · 89 €']] },
+        { title: 'Rituels visage', text: 'Des soins adaptés pour nettoyer, détendre et illuminer le teint.', items: [['Soin visage découverte', '30 min · 59 €'], ['Soin HANA du Japon', '45 min · 79 €'], ['Soin Pureté Haute Fréquence', '45 min · 69 €']] }
       ]
     },
     'menard-le-mans': {
       eyebrow: 'PRODUITS MENARD DU JAPON', title: 'L’expertise Menard', intro: 'Découvrez les rituels japonais Menard, alliant gestuelle experte et produits d’exception.', cards: [
-        ['Soin Signature Lumineux TK', 'Soin hydratation intensif à l’extrait de gardénia pour une peau souple et lumineuse.', '89 €'],
-        ['Éclat Suprême Fairlucent', 'Un rituel illuminant haute performance pour une peau visiblement plus lumineuse.', '109 €'],
-        ['Lumière Pure Saranari', 'Soin visage anti-âge associant hydratation profonde, élasticité et confort.', '125 €']
+        { title: 'Hydratation & éclat', text: 'Des formules Menard pour une peau souple, lumineuse et visiblement plus lisse.', items: [['Soin Signature Lumineux TK', '60 min · 89 €'], ['Style premium : Éclat Suprême Fairlucent', '70 min · 109 €'], ['Soin Lumière Pure Saranari', '80 min · 125 €']] },
+        { title: 'Anti-âge & rituels', text: 'Des soins haute performance pour les peaux exigeantes et matures.', items: [['Soin Anti-Âge Global & Hydratation Intense', '90 min · 145 €'], ['Soin de Quatre saisons', '90 min · 169 €'], ['Soin des mains', '30 min · 45 €']] }
       ]
     },
     'massages-le-mans': {
-      eyebrow: 'MASSAGES CORPS', title: 'Une parenthèse de bien-être', intro: 'Des massages conçus pour relâcher les tensions et retrouver une sensation de légèreté.', cards: [
-        ['Massage Californien', 'Un massage enveloppant, doux et profondément relaxant pour le corps.', 'Réservation sur Planity'],
-        ['Massage dos & épaules', 'Un soin ciblé pour délier les tensions du haut du corps.', 'Réservation sur Planity'],
-        ['Kobido visage', 'Un massage du visage inspiré des techniques japonaises.', 'Réservation sur Planity']
+      eyebrow: 'MASSAGES CORPS', title: 'Une parenthèse de bien-être', intro: 'Des massages enveloppants et des rituels aux pochons d’herbes pour relâcher les tensions.', cards: [
+        { title: 'Massages enveloppants', text: 'Huile parfumée au choix sur place, pour une relaxation profonde du corps et de l’esprit.', items: [['Californien', '60 min · 75 €'], ['Californien', '90 min · 109 €'], ['Dos et épaules', '35 min · 49 €']] },
+        { title: 'Rituels Hakone', text: 'Massage inspiré du Japon avec pochons d’herbes sèches chauds.', items: [['Rituel Hakone', '60 min · 89 €'], ['Rituel Hakone', '90 min · 129 €']] },
+        { title: 'Soins corps ciblés', text: 'Des soins pour lisser la peau, apaiser les mains et alléger les jambes.', items: [['Gommage Corps Douceur', '45 min · 59 €'], ['Massage et soins des mains', '30 min · 45 €'], ['Jambes légères aux pochons d’herbes', '30 min · 39 €'], ['Jambes légères aux pochons d’herbes', '45 min · 55 €']] }
       ]
     },
     'maquillage-permanent-le-mans': {
       eyebrow: 'MAQUILLAGE PERMANENT', title: 'Sublimez vos traits durablement', intro: 'Des prestations de dermopigmentation réalisées avec précision pour un résultat harmonieux et naturel.', cards: [
-        ['Sourcils', 'Microblading, microshading et restructuration pour redessiner la ligne du sourcil.', 'À partir de 300 €'],
-        ['Lèvres', 'Dégradé ou remplissage pour des lèvres définies et lumineuses.', 'À partir de 350 €'],
-        ['Eyeliner', 'Un trait personnalisé pour intensifier le regard avec élégance.', 'À partir de 200 €']
+        { title: 'Eyeliner', text: 'Un trait personnalisé pour intensifier le regard avec élégance.', items: [['Création eyeliner', '200 €'], ['Retouche après 6 mois', '75 €'], ['Retouche après 12 mois', '150 €'], ['Retouche après 20 mois', '170 €']] },
+        { title: 'Sourcils', text: 'Microblading, microshading et micro-grayling pour une ligne harmonieuse.', items: [['Rendez-vous conseil', 'Offert'], ['Microblading / Microshading', '300 €'], ['Micro-Grayling (effet ombré & poil)', '350 €'], ['Retouche après 6 mois', '100–110 €'], ['Retouche après 12 mois', '180–190 €'], ['Retouche après 20 mois', '250–300 €']] },
+        { title: 'Lèvres', text: 'Un dégradé doux ou un remplissage complet, adapté à vos traits.', items: [['Dégradé', '350 €'], ['Remplissage complet', '450 €'], ['Retouche après 6 mois', '110–120 €'], ['Retouche après 12 mois', '150–190 €'], ['Retouche après 20 mois', '230–270 €']] },
+        { title: 'Sourcils — épilation', text: 'Prestations esthétiques complémentaires pour structurer le regard.', items: [['Épilation sourcils — restructuration', '32 €'], ['Épilation sourcils — entretien mensuel', '22 €'], ['Épilation + restructuration (mineur inclus)', '25 €'], ['Grain de beauté (1 à 3)', '50 €']] }
       ]
     }
   };
   const createDetailPage = detail => {
     const section = document.createElement('section');
     section.className = 'eb-detail-page';
-    section.innerHTML = `<div class="eb-detail-intro"><p>${detail.eyebrow}</p><h1>${detail.title}</h1><span>${detail.intro}</span></div><div class="eb-detail-cards">${detail.cards.map(([name, text, price]) => `<article><p>${price}</p><h2>${name}</h2><span>${text}</span><a href="${planity}" target="_blank" rel="noopener">Prendre rendez-vous</a></article>`).join('')}</div>`;
+    section.innerHTML = `<div class="eb-detail-intro"><p>${detail.eyebrow}</p><h1>${detail.title}</h1><span>${detail.intro}</span></div><div class="eb-detail-cards">${detail.cards.map(card => `<article><h2>${card.title}</h2><span>${card.text}</span><ul>${card.items.map(([name, price]) => `<li><b>${name}</b><em>${price}</em></li>`).join('')}</ul><a href="${planity}" target="_blank" rel="noopener">Prendre rendez-vous</a></article>`).join('')}</div>`;
     return section;
   };
   if (!window.__ETOILE_ROUTE__ && pageview) {
