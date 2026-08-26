@@ -4,7 +4,7 @@
   const phoneLabel = '02 43 17 80 56';
   const email = 'etoilebeautestudio@gmail.com';
   const finalStyle = document.createElement('style');
-  finalStyle.textContent = '.eb-booking-section a{color:#16120e!important}@media(max-width:720px){#w-i23sk9bo{top:auto!important;bottom:24px!important}}';
+  finalStyle.textContent = '.eb-booking-section a{color:#16120e!important}#w-ho6snzah a{color:#e8bd45!important;-webkit-text-fill-color:#e8bd45!important;text-decoration-color:#e8bd45!important;font-weight:700!important}@media(max-width:720px){#w-i23sk9bo{top:auto!important;bottom:24px!important}}';
   document.head.append(finalStyle);
   const maps = 'https://maps.app.goo.gl/kQ4AEPoV4JqBQW9CA?g_st=ic';
   const instagram = 'https://www.instagram.com/etoilebeautestudiolemans/';
