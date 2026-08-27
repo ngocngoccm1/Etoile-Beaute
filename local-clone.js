@@ -132,6 +132,12 @@
     section.innerHTML = `<div class="eb-detail-intro"><p>${detail.eyebrow}</p><h1>${detail.title}</h1><span>${detail.intro}</span></div><div class="eb-detail-cards">${detail.cards.map(card => `<article><h2>${card.title}</h2><span>${card.text}</span><ul>${card.items.map(([name, price]) => `<li><b>${name}</b><em>${price}</em></li>`).join('')}</ul><a href="${planity}" target="_blank" rel="noopener">Prendre rendez-vous</a></article>`).join('')}</div>`;
     return section;
   };
+  const createMenardEditorial = () => {
+    const section = document.createElement('section');
+    section.className = 'eb-menard-editorial';
+    section.innerHTML = `<div class="eb-menard-lead"><p>ÉTOILE BEAUTÉ STUDIO & MENARD</p><h2>L’excellence de la cosmétique japonaise au Mans</h2><div><p>Étoile Beauté Studio est distributeur officiel MENARD au Mans et en Sarthe. Nous avons fait le choix de travailler exclusivement avec les cosmétiques MENARD pour nos soins visage et nos conseils beauté.</p><p>Plus qu’une marque proposée parmi d’autres, MENARD est au cœur de notre approche du soin : des rituels japonais raffinés, des formules issues de la recherche scientifique et une sélection de gammes permettant d’accompagner chaque peau, de l’hydratation essentielle aux soins anti-âge les plus prestigieux.</p><p>Les produits MENARD sont utilisés lors de nos soins en cabine et disponibles à l’institut, afin de prolonger votre rituel beauté à domicile.</p></div></div><section class="eb-menard-expertise"><div><p>VOTRE EXPERTISE MENARD AU MANS</p><h3>Une routine pensée pour votre peau</h3><span>Chaque soin est personnalisé selon votre peau, vos besoins et vos objectifs. Votre esthéticienne vous conseille ensuite les produits MENARD les plus adaptés pour prolonger à domicile les bénéfices de votre soin en cabine.</span></div><strong>Distributeur officiel MENARD<br>au Mans et en Sarthe</strong></section><section class="eb-menard-ranges"><header><p>LES GAMMES MENARD</p><h3>Nature, science et raffinement</h3></header><div class="eb-menard-range-grid"><article><img src="${base}assets/menard/tk.jpg" alt="Produits Menard TK"><h4>TK — Hydratation & douceur</h4><p>Une gamme essentielle qui associe extrait de gardénia, acide hyaluronique et céramides pour préserver l’hydratation, la souplesse et le confort de la peau.</p></article><article><img src="${base}assets/menard/fairlucent.png" alt="Produits Menard Fairlucent"><h4>FAIRLUCENT — Éclat & uniformité</h4><p>Une gamme pour un teint plus uniforme et lumineux, qui aide à prévenir et atténuer l’apparence des taches brunes et des taches de rousseur.</p></article><article><img src="${base}assets/menard/saranari.jpg" alt="Produits Menard Saranari"><h4>SARANARI — Fermeté & anti-âge</h4><p>Une ligne anti-âge haut de gamme aux extraits de Pivoine SX et GL II Bio, associant acide hyaluronique, élastine et collagène soluble.</p></article><article><img src="${base}assets/menard/embellir.jpg" alt="Produits Menard Embellir"><h4>EMBELLIR — L’anti-âge global</h4><p>La ligne iconique aux extraits de Reishi rouge SX et noir SX, pensée pour préserver hydratation, souplesse, fermeté et éclat.</p></article><article class="eb-menard-authent"><div><p>AUTHENT</p><h4>L’aboutissement de la recherche MENARD</h4><span>Un soin d’exception autour d’actifs précieux, dont la rose Semi-Plena, les graines de merisier, Pang Da Hai et l’orge violette, pour une peau visiblement revitalisée.</span></div></article></div></section><section class="eb-menard-complements"><p>LES SOINS COMPLÉMENTAIRES MENARD</p><h3>Personnaliser chaque rituel</h3><div><article><h4>BEAUNESS</h4><span>Pureté, fraîcheur et équilibre : une lotion inspirée des sources thermales japonaises, particulièrement appréciée des peaux mixtes à grasses et sujettes aux imperfections.</span></article><article><h4>COLAX C & COLAX EYE C</h4><span>Des soins ciblés au collagène et à l’acide hyaluronique pour l’hydratation, la fermeté et la fraîcheur du contour des yeux.</span></article><article><h4>HERB MASK</h4><span>Un masque exfoliant sensoriel aux granules végétales et à l’huile de jojoba, pour retrouver douceur, souplesse et éclat.</span></article></div><footer>Chez Étoile Beauté Studio, les expertises MENARD se combinent selon les besoins du moment, pour un soin personnalisé en cabine et une routine adaptée à poursuivre à domicile.</footer></section>`;
+    return section;
+  };
   if (!window.__ETOILE_ROUTE__ && pageview) {
     const sections = [...pageview.querySelectorAll(':scope > .com-section')];
     const hero = sections[0];
@@ -162,7 +168,11 @@
       routeNav.setAttribute('aria-label', 'Navigation principale');
       routeNav.innerHTML = `${menuItems.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a href="${planity}" target="_blank" rel="noopener">Réserver sur Planity</a>`;
       pageview.prepend(routeNav);
-      if (detail) routeNav.after(createDetailPage(detail));
+      if (detail) {
+        const detailPage = createDetailPage(detail);
+        routeNav.after(detailPage);
+        if (window.__ETOILE_ROUTE__ === 'menard-le-mans') detailPage.after(createMenardEditorial());
+      }
     }
   }
 
