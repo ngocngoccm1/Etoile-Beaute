@@ -4,7 +4,7 @@
   const phoneLabel = '02 43 17 80 56';
   const email = 'etoilebeautestudio@gmail.com';
   const finalStyle = document.createElement('style');
-  finalStyle.textContent = '.eb-booking-section a{color:#16120e!important}#w-ho6snzah a{color:#e8bd45!important;-webkit-text-fill-color:#e8bd45!important;text-decoration-color:#e8bd45!important;font-weight:700!important}@media(max-width:720px){#w-i23sk9bo{top:auto!important;bottom:24px!important}}';
+  finalStyle.textContent = '.eb-booking-section a{color:#16120e!important}#w-ho6snzah a{color:#e8bd45!important;-webkit-text-fill-color:#e8bd45!important;text-decoration-color:#e8bd45!important;font-weight:700!important}@media(max-width:720px){#w-i23sk9bo{top:auto!important;bottom:24px!important}}' + (window.__ETOILE_ROUTE__ ? '#w-y1kek8s1{display:none!important}' : '#w-y1kek8s1{width:448px!important;height:635px!important}#w-y1kek8s1 .popup-background{background-image:url("./assets/webcake/promo-rentree-septembre-2026.jpg")!important}@media(max-width:720px){#w-y1kek8s1{width:calc(100vw - 32px)!important;height:calc(141.88vw - 45.4px)!important;max-height:calc(100vh - 32px)!important}}');
   document.head.append(finalStyle);
   const maps = 'https://maps.app.goo.gl/kQ4AEPoV4JqBQW9CA?g_st=ic';
   const instagram = 'https://www.instagram.com/etoilebeautestudiolemans/';
@@ -100,28 +100,28 @@
   const routeDetails = {
     'soins-visage-le-mans': {
       eyebrow: 'SOINS DU VISAGE', title: 'Soins visage sur mesure', intro: 'Des rituels inspirés du Japon, pour détendre les traits, purifier la peau et raviver l’éclat.', cards: [
-        { title: 'Massages visage & crâne', text: 'Des gestes précis et relaxants pour libérer les tensions du visage, du cuir chevelu et de la nuque.', items: [['Massage visage HANA', '30 min · 45 €'], ['Massage crânien Shiatsu', '20 min · 35 €'], ['Rituel crânien — tête, nuque & épaules', '45 min · 55 €'], ['Rituel crânien et visage aux pochons d’herbes', '60 min · 89 €']] },
+        { title: 'Massages visage & crâne', text: 'Des gestes précis et relaxants pour libérer les tensions du visage, du cuir chevelu et de la nuque.', items: [['Massage visage HANA', '30 min · 45 €'], ['Massage crânien', '20 min · 35 €'], ['Rituel crânien tête, nuque & épaules', '45 min · 55 €']] },
         { title: 'Rituels visage', text: 'Des soins adaptés pour nettoyer, détendre et illuminer le teint.', items: [['Soin visage découverte', '30 min · 59 €'], ['Soin HANA du Japon', '45 min · 79 €'], ['Soin Pureté Haute Fréquence', '45 min · 69 €']] }
       ]
     },
     'menard-le-mans': {
       eyebrow: 'PRODUITS MENARD DU JAPON', title: 'L’expertise Menard', intro: 'Découvrez les rituels japonais Menard, alliant gestuelle experte et produits d’exception.', cards: [
-        { title: 'Hydratation & éclat', text: 'Des formules Menard pour une peau souple, lumineuse et visiblement plus lisse.', items: [['Soin Signature Lumineux TK', '60 min · 89 €'], ['Style premium : Éclat Suprême Fairlucent', '70 min · 109 €'], ['Soin Lumière Pure Saranari', '80 min · 125 €']] },
-        { title: 'Anti-âge & rituels', text: 'Des soins haute performance pour les peaux exigeantes et matures.', items: [['Soin Anti-Âge Global & Hydratation Intense', '90 min · 145 €'], ['Soin de Quatre saisons', '90 min · 169 €'], ['Soin des mains', '30 min · 45 €']] }
+        { title: 'Hydratation & éclat', text: 'Des formules Menard pour une peau souple, lumineuse et visiblement plus lisse.', items: [['Soin Visage TK', '60 min · 89 €'], ['Éclat Suprême Fairlucent', '70 min · 109 €'], ['Soin Lumière de Saranari', '80 min · 125 €']] },
+        { title: 'Anti-âge & rituels', text: 'Des soins haute performance pour les peaux exigeantes et matures.', items: [['Soin Anti-Âge Global Embellir', '90 min · 145 €'], ['Soin des Quatre Saisons Embellir', '90 min · 169 €']] }
       ]
     },
     'massages-le-mans': {
       eyebrow: 'MASSAGES CORPS', title: 'Une parenthèse de bien-être', intro: 'Des massages enveloppants et des rituels aux pochons d’herbes pour relâcher les tensions.', cards: [
         { title: 'Massages enveloppants', text: 'Huile parfumée au choix sur place, pour une relaxation profonde du corps et de l’esprit.', items: [['Californien', '60 min · 75 €'], ['Californien', '90 min · 109 €'], ['Dos et épaules', '35 min · 49 €']] },
-        { title: 'Rituels Hakone', text: 'Massage inspiré du Japon avec pochons d’herbes sèches chauds.', items: [['Rituel Hakone', '60 min · 89 €'], ['Rituel Hakone', '90 min · 129 €']] },
-        { title: 'Soins corps ciblés', text: 'Des soins pour lisser la peau, apaiser les mains et alléger les jambes.', items: [['Gommage Corps Douceur', '45 min · 59 €'], ['Massage et soins des mains', '30 min · 45 €'], ['Jambes légères aux pochons d’herbes', '30 min · 39 €'], ['Jambes légères aux pochons d’herbes', '45 min · 55 €']] }
+        { title: 'Rituels Hakone', text: 'Massage inspiré du Japon avec pochons d’herbes sèches chauds.', items: [['Rituel Hakone', '45 min · 89 €'], ['Rituel Hakone', '90 min · 149 €'], ['Rituel Hakone Jambes Sereines', '45 min · 89 €']] },
+        { title: 'Soins corps ciblés', text: 'Des soins pour lisser la peau, apaiser les mains et alléger les jambes.', items: [['Massage et soin des mains', '30 min · 45 €'], ['Jambes Légères', '30 min · 49 €']] }
       ]
     },
     'maquillage-permanent-le-mans': {
       eyebrow: 'MAQUILLAGE PERMANENT', title: 'Sublimez vos traits durablement', intro: 'Des prestations de dermopigmentation réalisées avec précision pour un résultat harmonieux et naturel.', cards: [
         { title: 'Eyeliner', text: 'Un trait personnalisé pour intensifier le regard avec élégance.', items: [['Création eyeliner', '200 €'], ['Retouche après 6 mois', '75 €'], ['Retouche après 12 mois', '150 €'], ['Retouche après 20 mois', '170 €']] },
-        { title: 'Sourcils', text: 'Microblading, microshading et micro-grayling pour une ligne harmonieuse.', items: [['Rendez-vous conseil', 'Offert'], ['Microblading / Microshading', '300 €'], ['Micro-Grayling (effet ombré & poil)', '350 €'], ['Retouche après 6 mois', '100–110 €'], ['Retouche après 12 mois', '180–190 €'], ['Retouche après 20 mois', '250–300 €']] },
-        { title: 'Lèvres', text: 'Un dégradé doux ou un remplissage complet, adapté à vos traits.', items: [['Dégradé', '350 €'], ['Remplissage complet', '450 €'], ['Retouche après 6 mois', '110–120 €'], ['Retouche après 12 mois', '150–190 €'], ['Retouche après 20 mois', '230–270 €']] },
+        { title: 'Sourcils', text: 'Microblading, microshading et micrograyling pour une ligne harmonieuse.', items: [['Microblading / Microshading', '300 €'], ['Micrograyling (ombré, poil à poil)', '350 €'], ['Retouche après 6 mois', '100 €'], ['Retouche après 12 mois', '180 €'], ['Retouche après 20 mois', '250 €']] },
+        { title: 'Lèvres', text: 'Un dégradé doux ou un remplissage complet, adapté à vos traits.', items: [['Dégradé', '350 €'], ['Remplissage complet', '450 €'], ['Retouche après 6 mois', '110 €'], ['Retouche après 12 mois', '150 €'], ['Retouche après 20 mois', '230 €']] },
         { title: 'Sourcils — épilation', text: 'Prestations esthétiques complémentaires pour structurer le regard.', items: [['Épilation sourcils — restructuration', '32 €'], ['Épilation sourcils — entretien mensuel', '22 €'], ['Épilation + restructuration (mineur inclus)', '25 €'], ['Grain de beauté (1 à 3)', '50 €']] }
       ]
     }
