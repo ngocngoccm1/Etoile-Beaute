@@ -190,6 +190,7 @@
     if (['soins-visage-le-mans', 'massages-le-mans'].includes(route)) document.body.classList.add('eb-photo-service-page');
     const intro = section.querySelector('.eb-detail-intro');
     if (route === 'soins-visage-le-mans') {
+      document.body.classList.add('eb-face-service-page');
       section.classList.add('eb-detail-page--photography');
       const feature = document.createElement('div');
       feature.className = 'eb-treatment-feature';
