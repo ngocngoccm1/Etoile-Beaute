@@ -10,7 +10,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=
 createServer((request, response) => {
   const rawPathname = new URL(request.url, `http://${request.headers.host}`).pathname;
   const pathname = rawPathname.length > 1 ? rawPathname.replace(/\/+$/, '') : rawPathname;
-  const sectionPages = new Set(['/soins-visage-le-mans', '/menard-le-mans', '/massages-le-mans', '/maquillage-permanent-le-mans', '/institut', '/contact']);
+  const sectionPages = new Set(['/soins-visage-le-mans', '/menard-le-mans', '/massages-le-mans', '/maquillage-permanent-le-mans', '/institut', '/contact', '/soins-des-mains-gommage-corps']);
   if (sectionPages.has(pathname)) {
     response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     createReadStream(join(root, `${pathname.slice(1)}/index.html`)).pipe(response);

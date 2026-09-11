@@ -13,7 +13,7 @@ for (const file of ['local-clone.css', 'local-clone.js', 'service-page.html', 's
   await cp(new URL(`../${file}`, import.meta.url), new URL(`../dist/${file}`, import.meta.url));
 }
 await cp(new URL('../assets/', import.meta.url), new URL('../dist/assets/', import.meta.url), { recursive: true });
-const sectionPaths = ['soins-visage-le-mans', 'menard-le-mans', 'massages-le-mans', 'maquillage-permanent-le-mans', 'institut', 'contact'];
+const sectionPaths = ['soins-visage-le-mans', 'menard-le-mans', 'massages-le-mans', 'maquillage-permanent-le-mans', 'institut', 'contact', 'soins-des-mains-gommage-corps'];
 for (const path of sectionPaths) {
   await cp(new URL(`../${path}/`, import.meta.url), new URL(`../dist/${path}/`, import.meta.url), { recursive: true });
 }

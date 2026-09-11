@@ -190,22 +190,34 @@
     if (['soins-visage-le-mans', 'massages-le-mans'].includes(route)) document.body.classList.add('eb-photo-service-page');
     const intro = section.querySelector('.eb-detail-intro');
     if (route === 'soins-visage-le-mans') {
-      document.body.classList.add('eb-face-service-page');
       section.classList.add('eb-detail-page--photography');
       const feature = document.createElement('div');
       feature.className = 'eb-treatment-feature';
       intro.before(feature);
       feature.append(intro);
-      feature.insertAdjacentHTML('beforeend', `<figure><img src="${base}assets/studio/soin-visage.jpg" alt="Soin du visage réalisé en cabine chez Étoile Beauté Studio" width="3024" height="4032" fetchpriority="high"><figcaption>Le soin du visage, au cœur de notre expertise.</figcaption></figure>`);
-      section.insertAdjacentHTML('beforeend', `<aside class="eb-brow-feature" aria-labelledby="eb-brow-title"><img src="${base}assets/studio/soin-sourcils.jpg" alt="Travail de précision sur les sourcils au studio" width="488" height="425" loading="lazy" decoding="async"><div><h2 id="eb-brow-title">Et pour sublimer votre regard</h2><p>Découvrez également nos prestations dédiées aux sourcils et au maquillage permanent, pour une ligne adaptée à vos traits.</p><a href="${base}maquillage-permanent-le-mans/">Découvrir le maquillage permanent</a></div></aside>`);
+      feature.insertAdjacentHTML('beforeend', `<figure><img src="${base}assets/studio/soin-visage-menard.png" alt="Soin du visage MENARD réalisé en cabine chez Étoile Beauté Studio" width="2048" height="1536" fetchpriority="high"><figcaption>Le soin du visage, au cœur de notre expertise.</figcaption></figure>`);
+      section.insertAdjacentHTML('beforeend', `<aside class="eb-brow-feature" aria-labelledby="eb-brow-title"><img src="${base}assets/studio/maquillage-sourcils.png" alt="Travail de précision sur les sourcils au studio" width="2048" height="1536" loading="lazy" decoding="async"><div><h2 id="eb-brow-title">Et pour sublimer votre regard</h2><p>Découvrez également nos prestations dédiées aux sourcils et au maquillage permanent, pour une ligne adaptée à vos traits.</p><a href="${base}maquillage-permanent-le-mans/">Découvrir le maquillage permanent</a></div></aside>`);
     }
     if (route === 'massages-le-mans') {
+      section.classList.add('eb-detail-page--body-photography');
       const atmosphere = document.createElement('section');
       atmosphere.className = 'eb-body-atmosphere';
       atmosphere.setAttribute('aria-labelledby', 'eb-body-atmosphere-title');
-      atmosphere.innerHTML = `<figure class="eb-body-room"><img src="${base}assets/studio/cabine-massage.png" alt="La cabine de massage du studio, préparée avec ses serviettes mauves MENARD" width="1536" height="2048" loading="lazy" decoding="async"></figure><div><h2 id="eb-body-atmosphere-title">Un espace pour lâcher prise</h2><p>Une cabine accueillante, du linge doux et une atmosphère paisible : votre parenthèse de bien-être commence dès votre installation.</p><p>Du massage californien aux rituels Hakone, prenez le temps de vous détendre dans l’intimité de notre studio au Mans.</p><figure class="eb-body-detail"><img src="${base}assets/studio/serviettes-menard.png" alt="Serviettes MENARD et bouquet parfumé disposés sur la table de soin" width="2048" height="1536" loading="lazy" decoding="async"><figcaption>Les petits détails de votre moment au studio.</figcaption></figure></div>`;
-      intro.after(atmosphere);
+      atmosphere.innerHTML = `<figure class="eb-body-room"><img src="${base}assets/studio/cabine-massage-studio.jpg" alt="Massage corps réalisé dans une cabine du studio" width="2048" height="1536" loading="lazy" decoding="async"></figure><div><h2 id="eb-body-atmosphere-title">Un espace pour lâcher prise</h2><p>Une cabine accueillante, du linge doux et une atmosphère paisible : votre parenthèse de bien-être commence dès votre installation.</p><p>Du massage californien aux rituels Hakone, prenez le temps de vous détendre dans l’intimité de notre studio au Mans.</p><figure class="eb-body-detail"><img src="${base}assets/studio/cabine-soin-studio.jpg" alt="Cabine de soin préparée avec ses serviettes mauves" width="2048" height="1536" loading="lazy" decoding="async"><figcaption>Les détails de votre moment au studio.</figcaption></figure></div>`;
+      const bodyFeature = document.createElement('div');
+      bodyFeature.className = 'eb-body-treatment-feature';
+      intro.before(bodyFeature);
+      bodyFeature.append(intro);
+      bodyFeature.insertAdjacentHTML('beforeend', `<figure><img src="${base}assets/studio/massage-corps-studio.png" alt="Massage corps réalisé par l'équipe Étoile Beauté Studio" width="2048" height="1536" fetchpriority="high"><figcaption>Des gestes attentifs, adaptés à votre moment.</figcaption></figure>`);
+      bodyFeature.after(atmosphere);
     }
+  };
+  const createHomeStudioGallery = () => {
+    const section = document.createElement('section');
+    section.className = 'eb-home-studio-gallery';
+    section.setAttribute('aria-labelledby', 'eb-home-studio-title');
+    section.innerHTML = `<div class="eb-home-studio-gallery__intro"><p>NOTRE INSTITUT AU MANS</p><h2 id="eb-home-studio-title">Entrez chez Étoile Beauté Studio</h2><span>Un espace de soin chaleureux, où chaque rituel commence par une écoute attentive.</span><a href="${base}institut/">Découvrir l'institut</a></div><div class="eb-home-studio-gallery__images"><figure class="eb-home-studio-gallery__front"><img src="${base}assets/studio/devanture-studio.jpg" alt="Devanture d'Étoile Beauté Studio au Mans" width="1536" height="2048" loading="lazy" decoding="async"></figure><figure class="eb-home-studio-gallery__lounge"><img src="${base}assets/studio/accueil-menard-studio.png" alt="Espace d'accueil MENARD d'Étoile Beauté Studio" width="1536" height="2048" loading="lazy" decoding="async"></figure><figure><img src="${base}assets/studio/rituel-tk-studio.png" alt="Produits MENARD TK disponibles à l'institut" width="2048" height="1536" loading="lazy" decoding="async"></figure><figure><img src="${base}assets/studio/pochons-hakone-studio.png" alt="Pochons d'herbes utilisés dans les rituels Hakone" width="2048" height="1536" loading="lazy" decoding="async"></figure></div>`;
+    return section;
   };
   const createServiceFollowup = () => {
     const section = document.createElement('section');
@@ -222,6 +234,7 @@
       explore.setAttribute('aria-label', 'Découvrir le studio');
       explore.innerHTML = `<div><p>Découvrez Etoile Beauté Studio</p><h2>Chaque univers a sa page</h2><span>Explorez nos soins, notre institut et prenez rendez-vous en quelques clics.</span></div><nav>${menuItems.slice(1).map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}</nav>`;
       hero.after(explore);
+      explore.after(createHomeStudioGallery());
       sections.slice(1).forEach(section => {
         section.hidden = section.id !== 'w-9dhr9sri';
       });
@@ -269,7 +282,9 @@
   socialSpotlight.innerHTML = `<p>Suivez Etoile Beauté Studio</p><nav><a href="${instagram}" target="_blank" rel="noopener">Instagram</a><a href="${facebook}" target="_blank" rel="noopener">Facebook</a><a href="${maps}" target="_blank" rel="noopener">Google Maps</a></nav>`;
   const firstSection = document.querySelector('.pageview > .com-section');
   const homeExplore = document.querySelector('.eb-home-explore');
-  if (homeExplore) homeExplore.after(socialSpotlight);
+  const homeStudioGallery = document.querySelector('.eb-home-studio-gallery');
+  if (homeStudioGallery) homeStudioGallery.after(socialSpotlight);
+  else if (homeExplore) homeExplore.after(socialSpotlight);
   else if (firstSection) firstSection.after(socialSpotlight);
   else document.body.prepend(socialSpotlight);
   document.addEventListener('click', event => {
