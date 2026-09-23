@@ -126,7 +126,7 @@
   const createDetailPage = detail => {
     const section = document.createElement('section');
     section.className = 'eb-detail-page';
-    if (detail === routeDetails['soins-visage-le-mans']) section.classList.add('eb-detail-page--four-cards');
+    if (['soins-visage-le-mans', 'maquillage-permanent-le-mans'].some(route => detail === routeDetails[route])) section.classList.add('eb-detail-page--four-cards');
     section.innerHTML = `<div class="eb-detail-intro"><p>${detail.eyebrow}</p><h1>${detail.title}</h1><span>${detail.intro}</span></div><div class="eb-detail-cards">${detail.cards.map(card => `<article><h2>${card.title}</h2><span>${card.text}</span><ul>${card.items.map(([name, price]) => `<li><b>${name}</b><em>${price}</em></li>`).join('')}</ul><a href="${planity}" target="_blank" rel="noopener">Prendre rendez-vous</a></article>`).join('')}</div>`;
     return section;
   };
